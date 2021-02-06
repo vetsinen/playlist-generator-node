@@ -3,10 +3,12 @@ export default class Track {
     private readonly genre: string;
     private readonly subgenre: string;
     private readonly rank: number ;
-    constructor(trackname: string) {
+    private readonly folder: string;
+    constructor(trackname: string, folder: string) {
         if (!Track.validateTrackName(trackname))
             throw new Error('the track ${trackname} is not normalized')
         this.trackname = trackname
+        this.folder = folder
         this.genre = trackname.substring(0,2)
         this.subgenre = trackname.substring(0,5)
         this.rank = Number.parseInt(trackname[6])
