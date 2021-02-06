@@ -5,7 +5,6 @@
   "main": "src/main.ts",
   "scripts": {
     "test": "jest",
-
     "coverage": "jest --coverage"
   },
   "repository": {
@@ -18,7 +17,11 @@
     "url": "https://github.com/vetsinen/playlist-generator-node/issues"
   },
   "homepage": "https://github.com/vetsinen/playlist-generator-node#readme",
-  "dependencies": {},
+  "dependencies": {
+    "@types/node": "^14.14.25",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.30"
+  },
   "devDependencies": {
     "@types/jest": "^26.0.20",
     "jest": "^26.6.3",
