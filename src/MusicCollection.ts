@@ -6,6 +6,16 @@ export default class MusicCollection {
     public readonly scannedDirectory: string
     public tracks: { [key: string]: Track[] } = {}
 
+    public exportPlaylistAsM3u(playlist: Array<string>=[],dir: string='bachasalsa', filename: string = "hello.m3u"): void{
+        let content: string = "#EXTM3U\n"
+        playlist.forEach(track=>{
+            content+='#EXTINF:0,'+track+"\n"
+            content+=path.join(dir,track)+"\n"
+        })
+
+        fs.writeFileSync(filename, content)
+    }
+
     constructor(scannedDirectory: string = '/home/jsdev/testmusic/') {
         this.scannedDirectory = scannedDirectory
 
@@ -33,6 +43,7 @@ export default class MusicCollection {
         }
 //console.log(tracks)
     }
+
 
     public genNBlocksPlaylist(n: number,balance: string): Array<string>{
         //FIXME make balance callback
