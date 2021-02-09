@@ -12,7 +12,6 @@ export default class MusicCollection {
             content+='#EXTINF:0,'+track+"\n"
             content+=path.join(dir,track)+"\n"
         })
-
         fs.writeFileSync(filename, content)
     }
 
@@ -44,13 +43,12 @@ export default class MusicCollection {
 //console.log(tracks)
     }
 
-
     public genNBlocksPlaylist(n: number,balance: string): Array<string>{
-        //FIXME make balance callback
         let playlist: Array<string> = []
         let addPlaylist:Array<string>=[]
         for (let i=0;i<n;i++){
             if (balance==='s2b2'){addPlaylist = this.block2s2b()}
+            if (balance==='b3s1'){addPlaylist = this.blockcostarica()}
             else addPlaylist=[]
             if (addPlaylist.length===0){break}
             playlist = [...playlist, ...addPlaylist.filter(track=>track!=='')]
@@ -64,6 +62,15 @@ export default class MusicCollection {
             this.getRandomTrackBySubgenre('salra'),
             this.getRandomTrackBySubgenre('bacha'),
             this.getRandomTrackBySubgenre('bacha'),
+        ]
+    }
+
+    public blockcostarica(): Array<string>{
+        return [
+            this.getRandomTrackBySubgenre('bacha'),
+            this.getRandomTrackBySubgenre('bacha'),
+            this.getRandomTrackBySubgenre('bacha'),
+            this.getRandomTrackBySubgenre('salra'),
         ]
     }
 
